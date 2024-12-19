@@ -30,6 +30,7 @@ if [ "$cpu_usage_1m" -lt "$threshold" ] && [ "$cpu_usage_5m" -lt "$threshold" ];
     msg2="averages: 1 min ${cpu_usage_1m}%, 5 min ${cpu_usage_5m}%, 15 min ${cpu_usage_15m}%, SSH: ${ssh_active}"
     echo $msg1$msg2
     curl -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=$msg1$msg2" | tee -a ~/ip_telegram.log
+    echo "" | tee -a ~/ip_telegram.log # append a newline to the log file
     echo ""
     sleep 1
     if [ $ssh_active -eq 0 ]; then
