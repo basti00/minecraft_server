@@ -8,7 +8,7 @@ CHAT_ID="-4130647710"
 # re/start nginx server
 sudo systemctl restart nginx
 
-cd ~/minecraft_server/
+cd ~
 # display stderr and output of server in console, while also appending it to a log file
 
 # Send the public IP address as a message before waiting 15 sec, while also starting the server immediatly
