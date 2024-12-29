@@ -6,7 +6,7 @@ BOT_TOKEN="7134072097:AAHMvRoz0gW9-XtEB0Q9Gx6oYWOdnojh9e8"
 CHAT_ID="-4130647710"
 
 # Threshold for CPU usage (in percentage)
-threshold=20
+threshold=15
 
 cpu_usage_1m=$(uptime | awk -F'[: ,]+' '{printf "%.0f\n", $12 * 100}')
 cpu_usage_5m=$(uptime | awk -F'[: ,]+' '{printf "%.0f\n", $13 * 100}')
@@ -18,7 +18,7 @@ echo $msg
 echo ""
 
 # Compare CPU usage with threshold
-if [ "$cpu_usage_1m" -lt "$threshold" ] && [ "$cpu_usage_5m" -lt "$threshold" ]; then
+if [ "$cpu_usage_1m" -lt "$threshold" ] && [ "$cpu_usage_5m" -lt "$threshold" ] && [ "$cpu_usage_15m" -lt "$threshold" ]; then
     if ss -o state established '( dport = :ssh or sport = :ssh )' | grep -q ssh; then
         ssh_active=1
     else
